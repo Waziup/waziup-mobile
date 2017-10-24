@@ -6,27 +6,27 @@
  */
 
 const app = {
-  background: '#E9EBEE',
+  background: '#FFFFFF',
   cardBackground: 'transparent',
   listItemBackground: '#FFFFFF',
 };
 
 const brand = {
   brand: {
-    primary: '#8ec742',
-    secondary: '#17233D',
+    primary: '#0f73c7',
+    secondary: '#f47321',
   },
 };
 
 const text = {
-  textPrimary: '#8ec742',
-  textSecondary: '#777777',
+  textPrimary: '#0f73c7',
+  textSecondary: '#FFFFFF',
   headingPrimary: brand.brand.primary,
   headingSecondary: brand.brand.primary,
 };
 
 const borders = {
-  border: '#8ec742',
+  border: '#0f73c7',
 };
 
 const tabbar = {

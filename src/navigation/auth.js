@@ -40,7 +40,6 @@ const scenes = (
       key={'signUp'}
       title={'Sign Up'}
       clone
-      hideNavBar
       component={SignUpForm}
       analyticsDesc={'Sign Up'}
     />

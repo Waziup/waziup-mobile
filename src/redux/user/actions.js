@@ -62,10 +62,6 @@ function getUserData(dispatch) {
   * Login to Firebase with Email/Password
   */
 export function login(formData = {}, verifyEmail = false) {
-  if (Firebase === null) {
-    return () => new Promise((resolve, reject) =>
-      reject({ message: ErrorMessages.invalidFirebase }));
-  }
 
   // Reassign variables for eslint ;)
   let email = formData.Email || '';
@@ -83,35 +79,35 @@ export function login(formData = {}, verifyEmail = false) {
     if (email && password) saveCredentialsToStorage(email, password);
 
     // We're ready - let's try logging them in
-    return Firebase.auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((res) => {
-        if (res && res.uid) {
-          // Update last logged in data
-          FirebaseRef.child(`users/${res.uid}`).update({
-            lastLoggedIn: Firebase.database.ServerValue.TIMESTAMP,
-          });
-
-          // Send verification Email - usually used on first login
-          if (verifyEmail) {
-            Firebase.auth().currentUser
-              .sendEmailVerification()
-              .catch(() => console.log('Verification email failed to send'));
-          }
-
-          // Get Favourites
-          RecipeActions.getFavourites(dispatch);
-
-          // Get User Data
-          getUserData(dispatch);
-        }
-
-        // Send to Redux
-        return dispatch({
-          type: 'USER_LOGIN',
-          data: res,
-        });
-      }).catch((err) => { throw err; });
+    // return Firebase.auth()
+    //   .signInWithEmailAndPassword(email, password)
+    //   .then((res) => {
+    //     if (res && res.uid) {
+    //       // Update last logged in data
+    //       FirebaseRef.child(`users/${res.uid}`).update({
+    //         lastLoggedIn: Firebase.database.ServerValue.TIMESTAMP,
+    //       });
+    //
+    //       // Send verification Email - usually used on first login
+    //       if (verifyEmail) {
+    //         Firebase.auth().currentUser
+    //           .sendEmailVerification()
+    //           .catch(() => console.log('Verification email failed to send'));
+    //       }
+    //
+    //       // Get Favourites
+    //       RecipeActions.getFavourites(dispatch);
+    //
+    //       // Get User Data
+    //       getUserData(dispatch);
+    //     }
+    //
+    //     // Send to Redux
+    //     return dispatch({
+    //       type: 'USER_LOGIN',
+    //       data: res,
+    //     });
+    //   }).catch((err) => { throw err; });
   };
 }
 

@@ -255,7 +255,9 @@ class AuthForm extends Component {
 
     return true;
   }
-
+  goToHome = ()=>{
+    Actions.app({ type: 'reset' })
+  }
   render = () => {
     const Form = FormValidation.form.Form;
 
@@ -267,7 +269,12 @@ class AuthForm extends Component {
         style={[AppStyles.container]}
         contentContainerStyle={[AppStyles.container]}
       >*/}
-      
+
+      <Image
+        source={require('../../../images/splash_logo_icon.png')}
+        style={[styles.logo]}
+      />
+
           <Alerts
             status={this.state.resultMsg.status}
             success={this.state.resultMsg.success}
@@ -319,7 +326,13 @@ class AuthForm extends Component {
           }
           <View style={[AppStyles.row, AppStyles.paddingHorizontal]}>
                 <View style={[AppStyles.flex1]}>
-                  <SocialIcon
+                <Button
+                  title='Home'
+                  raised
+                  onPress={()=>{this.goToHome()}}
+                  style={[{borderRadius:5,padding:1}]}
+                />
+                  {/*<SocialIcon
                     title='Sign In With Facebook'
                     button
                     iconSize={15}
@@ -333,7 +346,7 @@ class AuthForm extends Component {
                     iconSize={15}
                     type='twitter'
                     style={[{borderRadius:5,padding:5}]}
-                  />
+                  />*/}
                 </View>
               </View>
           {this.props.formType ==='login' &&

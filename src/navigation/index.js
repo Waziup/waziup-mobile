@@ -30,7 +30,6 @@ export default Actions.create(
     />
 
     {/* Auth */}
-    {AuthScenes}
 
     {/* Main App */}
     <Scene key={'app'} {...AppConfig.navbarProps} title={AppConfig.appName} hideNavBar={false} type={ActionConst.RESET}>
@@ -49,5 +48,7 @@ export default Actions.create(
         analyticsDesc={'Placeholder: Coming Soon'}
       />
     </Scene>
+
+    {AuthScenes}
   </Scene>,
 );

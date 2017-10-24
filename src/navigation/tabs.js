@@ -19,8 +19,9 @@ import { NavbarMenuButton } from '@containers/ui/NavbarMenuButton/NavbarMenuButt
 import Placeholder from '@components/general/Placeholder';
 import Error from '@components/general/Error';
 import StyleGuide from '@containers/StyleGuideView';
-import Recipes from '@containers/recipes/Browse/BrowseContainer';
-import RecipeView from '@containers/recipes/RecipeView';
+//import Recipes from '@containers/recipes/Browse/BrowseContainer';
+import FarmView from '@containers/farms/FarmView';
+import FarmMap from '@containers/farms/FarmMap';
 
 const navbarPropsTabs = {
   ...AppConfig.navbarProps,
@@ -36,27 +37,27 @@ const scenes = (
   <Scene key={'tabBar'} tabs tabBarIconContainerStyle={AppStyles.tabbar} pressOpacity={0.95}>
     <Scene
       {...navbarPropsTabs}
-      key={'recipes'}
-      title={'Recipes'}
+      key={'farm'}
+      title={'Farm'}
       icon={props => TabIcon({ ...props, icon: 'search' })}
     >
       <Scene
         {...navbarPropsTabs}
-        key={'recipesListing'}
-        component={Recipes}
-        title={'Recipes'}
-        analyticsDesc={'Recipes: Browse Recipes'}
+        key={'farmPage'}
+        component={FarmView}
+        title={'Farm:'}
+        analyticsDesc={'Farm:view'}
       />
-      <Scene
+      {/*<Scene
         {...AppConfig.navbarProps}
         key={'recipeView'}
         component={RecipeView}
         getTitle={props => ((props.title) ? props.title : 'View Recipe')}
         analyticsDesc={'RecipeView: View Recipe'}
-      />
+      />*/}
     </Scene>
 
-    <Scene
+    {/*<Scene
       key={'timeline'}
       {...navbarPropsTabs}
       title={'Coming Soon'}
@@ -72,16 +73,24 @@ const scenes = (
       component={Error}
       icon={props => TabIcon({ ...props, icon: 'error' })}
       analyticsDesc={'Error: Example Error'}
-    />
+    />*/}
 
     <Scene
-      key={'styleGuide'}
+      key={'Map'}
       {...navbarPropsTabs}
-      title={'Style Guide'}
-      component={StyleGuide}
-      icon={props => TabIcon({ ...props, icon: 'speaker-notes' })}
-      analyticsDesc={'StyleGuide: Style Guide'}
+      title={'Farm Map'}
+      component={FarmMap}
+      icon={props => TabIcon({ ...props, icon: 'map' })}
+      analyticsDesc={'Farm Map:MapView'}
     />
+    {/*<Scene
+      key={'Map'}
+      {...navbarPropsTabs}
+      title={'Style guide'}
+      component={StyleGuide}
+      icon={props => TabIcon({ ...props, icon: 'map' })}
+      analyticsDesc={'Farm Map:MapView'}
+    />*/}
   </Scene>
 );
 
